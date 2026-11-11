@@ -1,0 +1,61 @@
+# 二进制与换行符保护
+#
+# 不声明二进制类型时，git 会对"看起来像文本"的文件做 LF <-> CRLF 转换。
+# STEP 是纯 ASCII、STL 的 80 字节头也多为 ASCII、PDF 头部同样是 ASCII，
+# git 的启发式探测会把它们误判成文本，checkout 时转换换行符，文件当场损坏。
+
+# 默认让 git 自己判断文本文件，但下面显式声明的一律不碰
+* text=auto
+
+# --- 3D / CAD ---
+*.stl    binary
+*.STL    binary
+*.step   binary
+*.STEP   binary
+*.stp    binary
+*.STP    binary
+*.3mf    binary
+*.sldprt binary
+*.SLDPRT binary
+*.sldasm binary
+*.SLDASM binary
+*.f3d    binary
+*.igs    binary
+*.iges   binary
+
+# --- 文档与图片 ---
+*.pdf    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.svg    text eol=lf
+
+# --- 压缩包与固件 ---
+*.zip    binary
+*.7z     binary
+*.rar    binary
+*.gz     binary
+*.xz     binary
+*.img    binary
+*.bin    binary
+*.onnx   binary
+
+# --- Onshape 导出的零件引用（JSON 文本，不是 CAD 二进制）---
+*.part   text eol=lf
+
+# --- 电子设计 ---
+*.kicad_pcb  text eol=lf
+*.kicad_sch  text eol=lf
+*.kicad_pro  text eol=lf
+
+# --- 纯文本一律 LF，避免跨平台污染 diff ---
+*.md     text eol=lf
+*.csv    text eol=lf
+*.json   text eol=lf
+*.xml    text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.py     text eol=lf
+*.sh     text eol=lf

@@ -1,0 +1,5 @@
+# Validated Windows build environment. Re-evaluate pins before upgrading.
+PyQt6==6.11.0
+pyserial==3.5
+pyinstaller==6.22.3
+ruckig==0.19.4

@@ -1,0 +1,31 @@
+# 参考克隆与厂商原件
+/repo_ref/
+/3D/
+/docs/datasheets/
+/hardware_solution/*
+!/hardware_solution/README.md
+
+# 本机凭据、环境与缓存
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# 构建产物
+/host/win11/build/
+/host/win11/dist/
+/host/win11/*.spec
+
+# 本机标定、位姿、遥测和测量；共享示例应放专用目录
+/host/win11/calib_host_xianduck.json
+/host/win11/poses_xianduck.json
+/host/win11/poses_xianduck.csv
+/host/win11/log_*.csv
+/host/win11/robot_profile*.json
+s288_*/
